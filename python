@@ -1,0 +1,137 @@
+  Setup
+section 1: Task 1 - Flutter & Dart Verification
+Below are the commands used to check the installation status of Flutter and Dart, along with their output logs:
+Command & Output Log:
+flutter --version
+
+
+
+S
+
+
+Hot Reload vs Hot Restart
+Hot Reload:
+ Hot Reload applies code changes quickly while preserving the current app state. Developers use it to quickly see UI and code changes during development.
+Hot Restart:
+ Hot Restart restarts the Flutter application and resets its current state. Developers use it when they need the app to restart completely so that larger code changes can take effect.
+
+
+Flutter 3.47.2 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision d3b14c8769
+Engine • revision 1cf1c4773f
+Tools • Dart 3.13.2 • DevTools 2.60.0
+
+dart --version
+
+Dart SDK version: 3.13.2 (stable) on "windows_x64"
+
+
+
+
+
+
+Section 2: Task 2 - Database (MySQL) Setup
+Below are the commands used to verify the MySQL Client/Server setup and connect to the database:
+Command & Output Log:
+mysql --version
+
+
+
+
+
+
+
+SQL Script Used: 
+
+CREATE DATABASE school;
+
+USE school;
+
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(150) UNIQUE,
+    enrolled_on DATE
+);
+
+INSERT INTO students (name, email, enrolled_on)
+VALUES
+('Maryan Ahmed', 'kawsar.ahmed@example.com', '2026-09-16'),
+('Amina Mohamed', 'Zamzam.mohamed@example.com', '2026-09-16');
+
+SELECT * FROM students;
+
+
+mysql  Ver 8.0.x for Win64 on x86_64 (MySQL Community Server - GPL)
+
+SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| amitdb             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| school             |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+Security Reflection
+Using the MySQL root account directly for application backend connections is poor security practice because the root account has full privileges over the database server. If the application is compromised, an attacker could use these privileges to modify or delete important data. A dedicated application user with only the required permissions is safer and follows the principle of least privilege.
+CREATE USER 'school_app'@'localhost'
+IDENTIFIED BY 'StrongPasswordHere';
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON school.*
+TO 'school_app'@'localhost';
+
+FLUSH PRIVILEGES;
+
+
+Section 3: Task 3 - Python Virtual Environment
+Below is the complete sequence of terminal commands used to create, activate, and configure the Python virtual environment and manage dependencies:
+Terminal Commands & Execution Log:
+
+mkdir python_setup_lab
+cd python_setup_lab
+py -m venv venv
+source venv/Scripts/activate
+pip install requests
+pip list
+pip freeze > requirements.txt
+
+Installed Packages (pip list output): 
+
+Package            Version
+------------------ ---------
+certifi            2026.7.22
+charset-normalizer 3.5.1
+idna               3.19
+pip                26.2.1
+requests           2.34.2
+urllib3            2.7.0
+
+
+
+
+
+
+
+
+
+
+
+
+Section 4: Task 4 - VS Code Workspace Configuration
+The workspace was set up in Visual Studio Code with the necessary extension stack and Python Interpreter configuration.
+Installed Extensions:
+Flutter (Dart Code)
+Dart (Dart Code)
+Python (Microsoft)
+Pylance (Microsoft)
+MySQL (Database Client)
+Python Interpreter Selected:
+Path: .\venv\Scripts\python.exe
+
+
